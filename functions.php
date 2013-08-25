@@ -32,11 +32,6 @@ if ( ! isset( $content_width ) )
 	$content_width = 604;
 
 /**
- * Adds support for a custom header image.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
  * Steel only works in WordPress 3.6 or later.
  */
 if ( version_compare( $GLOBALS['wp_version'], '3.6-alpha', '<' ) )
