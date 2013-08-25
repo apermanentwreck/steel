@@ -875,7 +875,7 @@ function the_stylesheets( $location, $package ) {
 		$data = json_decode( $files, true );
 		for( $i = 0; $i < count( $data['files'] ); $i++ ) {
 
-			echo '<link rel="stylesheet" href="/<?php echo $data['files'][$i]; ?>" />';
+			echo '<link rel="stylesheet" href="/' . $data['files'][$i] . '" />';
 
 		};
 
@@ -883,7 +883,7 @@ function the_stylesheets( $location, $package ) {
 	} else { 
 		$pkg = json_decode( file_get_contents( $package ), true );
 
-		echo '<link rel="stylesheet" href="<?php echo production_ui_url( $pkg['name'] . '.v' . $pkg['version'] . '.min.css' ); ?>" />';
+		echo '<link rel="stylesheet" href="' .  production_ui_url( $pkg['name'] . '.v' . $pkg['version'] . '.min.css' ) . '" />';
 	}
 
 }
