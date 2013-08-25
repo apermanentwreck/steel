@@ -72,7 +72,7 @@ function steel_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	add_editor_style( array( 'css/editor-style.css', 'fonts/genericons.css', steel_fonts_url() ) );
+	add_editor_style( array( 'css/editor-style.css' ) );
 
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
@@ -168,18 +168,10 @@ function steel_scripts_styles() {
 	// Loads JavaScript file with functionality specific to Steel.
 	wp_enqueue_script( 'steel-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '2013-07-18', true );
 
-	// Add Open Sans and Bitter fonts, used in the main stylesheet.
-	wp_enqueue_style( 'steel-fonts', steel_fonts_url(), array(), null );
-
-	// Add Genericons font, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/fonts/genericons.css', array(), '2.09' );
 
 	// Loads our main stylesheet.
 	wp_enqueue_style( 'steel-style', get_stylesheet_uri(), array(), '2013-07-18' );
 
-	// Loads the Internet Explorer specific stylesheet.
-	wp_enqueue_style( 'steel-ie', get_template_directory_uri() . '/css/ie.css', array( 'steel-style' ), '2013-07-18' );
-	wp_style_add_data( 'steel-ie', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'steel_scripts_styles' );
 
@@ -591,15 +583,19 @@ add_filter( 'wp_trim_excerpt', 'custom_excerpt_more' );
 
 add_action('publish_post', 'create_bitly');
 
+function get_settings_config( $setting ) {
+	$settings = json_decode( file_get_contents( get_template_directory_uri() . '/config/settings.json'), true );
+	return $settings[$setting];
+}
+
 // create bitly url when post is published
 function create_bitly( $postID ) {
-	$settings = json_decode( file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/config/settings.json'), true );
 	global $wpdb;
 
 	// here we get the permalink to your post
 	$url = get_permalink( $postID ); 
 	// This is the API call to fetch the shortened URL
-	$bitly = ( $settings['bitly'] ) ? 'https://api-ssl.bitly.com/v3/shorten?access_token=' . $settings['bitly'] . '&longUrl=' . urlencode( $url ) : null;
+	$bitly = ( $settings['bitly'] ) ? 'https://api-ssl.bitly.com/v3/shorten?access_token=' . get_settings_config( 'bitly' ) . '&longUrl=' . urlencode( $url ) : null;
 
 	// We are using cURL
 	if ( $bitly ) {
@@ -667,7 +663,7 @@ if ( get_option( 'upload_path' ) == null || get_option( 'upload_path' ) == 'cont
 
 function breadcrumbs( $id ) {
 	$html = '<ol class="Breacrumbs">';
-	$html .= '<li class="Icon solo item"><a href="' . esc_url( home_url() ) . '" title="' . __( 'Return back to the home page', 'twentytwelve' ) . '">&#x2302;</a></li>';
+	$html .= '<li class="Icon solo item"><a href="' . esc_url( home_url() ) . '" title="' . __( 'Return back to the home page', 'steel' ) . '">&#x2302;</a></li>';
 }
 
 function the_breadcrumbs() {
@@ -698,7 +694,7 @@ function the_breadcrumbs() {
 	if ( ! ( is_home() || is_front_page() ) ) {
 
 		echo '<ol class="Breadcrumbs" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">';
-		echo '<li class="Icon solo item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . esc_url( home_url() ) . '" rel="home" itemprop="url" title="' . __( 'Return back to the home page', 'twentytwelve' ) . '">&#x2302;</a></li>';
+		echo '<li class="Icon solo item" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . esc_url( home_url() ) . '" rel="home" itemprop="url" title="' . __( 'Return back to the home page', 'steel' ) . '">&#x2302;</a></li>';
 
 		if ( is_category() ) {
 			$this_cat = get_category(get_query_var('cat'), false);
@@ -841,15 +837,15 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 // trying to figure out how to get these 2 back
 // in to the header.php
 //remove_filter( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
-remove_action( 'wp_head', 'locale_stylesheet' );
+//remove_action( 'wp_head', 'locale_stylesheet' );
 remove_action( 'wp_head', 'noindex', 1 );
-remove_action( 'wp_head', 'wp_print_styles', 8 );
-remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
+//remove_action( 'wp_head', 'wp_print_styles', 8 );
+//remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'rel_canonical' );
-remove_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
+//remove_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
 // removes the link tag for the wp.me shortlink that gets generated
 remove_action( 'wp_head', 'shortlink_wp_head', 10 );
 // removing the default shortlink
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); 
-remove_action( 'wp_print_footer_scripts', '_wp_footer_scripts' );
+//remove_action( 'wp_print_footer_scripts', '_wp_footer_scripts' );
