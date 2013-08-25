@@ -19,7 +19,9 @@
 
 		<?php
 			/* ----- Mobile tags ----- */
-			include 'inc/meta/mobile.php';
+			if ( get_settings_config( 'mobile' ) ) {
+				include 'inc/meta/mobile.php';
+			}
 
 			/* ----- Facebook OG tags ----- */
 			if ( get_settings_config( 'facebook' ) ) {
