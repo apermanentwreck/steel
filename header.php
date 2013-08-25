@@ -125,7 +125,7 @@
 		<!-- iPad Portrait -->
 		<link rel="apple-touch-startup-image" sizes="768x1024" href="<?php echo image_path_url( 'startup/768x1024.png' ); ?>" media="screen and (min-device-width : 481px) and (max-device-width : 1024px) and (orientation : portrait)">
 
-		<?php the_stylesheets(); ?>
+		<?php the_stylesheets( null, null ); ?>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

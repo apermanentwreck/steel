@@ -862,7 +862,7 @@ function search_url_rewrite() {
 add_action( 'template_redirect', 'search_url_rewrite' );
 
 function the_stylesheets( $location, $package ) {
-	if ( ! $location ) return;
+	if ( ! empty( $location ) ) return;
 
 	/* ----- dev ----- */
 	if ( strpos( $_SERVER['HTTP_HOST'], 'dev' ) ) {
@@ -876,7 +876,7 @@ function the_stylesheets( $location, $package ) {
 
 	/* ----- prod ----- */
 	} else { 
-		$pkg = json_decode( file_get_contents( $package ), true );
+		$pkg = ( get_settings_config( 'package' ) ) ? get_settings_config( 'package' ) : json_decode( file_get_contents( $package ), true );
 
 		echo '<link rel="stylesheet" href="' .  production_ui_url( $pkg['name'] . '.v' . $pkg['version'] . '.min.css' ) . '" />';
 	}
