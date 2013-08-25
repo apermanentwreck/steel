@@ -1,0 +1,18 @@
+{
+    "bitly" : "{{ bitly access token }}",
+	"facebook" : "{{ facebook app id }}",
+	"twitter" : "{{ twitter handle }}",
+	"google_plus" : "{{ google plus id }}",
+	"stackexchange" : "{{ stack exchange open id user }}",
+	"google_analytics" : "{{ google analytics property id }}",
+	"ui" : {
+		"production" : "{{ url path to compressed files }}",
+		"stylesheets" : "{{ url path to stylesheets files, defaults to themes css }}",
+		"scripts" : "{{ url path to scripts files, defaults to themes js }}",
+		"images" : "{{ url path to images files, defaults to themes images }}",
+		"favicons" : "{{ url path to favicon files, defaults to themes images }}"
+	},
+	"package" : "{{ location to package.json for grunt }}",
+	"mobile" : {{ boolean for mobile support }},
+	"html5" : {{ boolean for html5 tag support }}
+}
