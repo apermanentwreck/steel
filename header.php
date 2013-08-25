@@ -46,20 +46,9 @@
 			/* ----- Profile links ----- */
 			include 'inc/meta/profile.php'; 
 
-			/* ----- Bitly Shortener ----- */
-			if ( get_settings_config( 'bitly' ) ) { ?>
-				<link rel="shortlink" href="<?php echo bitly_shortlink(); ?>" />
-		<?php 
-			} 
-		?>
+			/* ----- Alternate (Bitly, Canonical, RSS) links ----- */
+			include 'inc/meta/alternate-links.php'; 
 
-		<!-- Canonical -->
-        <link rel="canonical" href="<?php echo esc_url( home_url() ); ?>" />
-
-		<!-- RSS Feed / Alternate Links -->
-		<link rel="alternate" href="<?php echo get_feed_link(); ?>" title="RSS Feed for <?php bloginfo( 'name' ); ?>" type="application/rss+xml" />
-
-		<?php 
 			/* ----- Meta links ----- */
 			include 'inc/meta/links.php'; 
 		
@@ -81,7 +70,6 @@
 				include 'inc/meta/html5-shiv.php';
 			} 
 		?>
-
 
 		<!-- Title -->
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
