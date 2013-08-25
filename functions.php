@@ -646,7 +646,7 @@ function stylesheet_url( $path ) {
 		$stylesheet_path = get_settings_config( 'ui' );
 		$uri = esc_url( home_url( $stylesheet_path['stylesheet'] . $path ) );
 	} else {
-		$uri = get_template_directory() . '/css/' . $path
+		$uri = get_template_directory() . '/css/' . $path;
 	}
 	return $uri;
 }
@@ -657,7 +657,7 @@ function production_ui_url( $path ) {
 		$production_path = get_settings_config( 'ui' );
 		$uri = esc_url( home_url( $production_path['production'] . $path ) );
 	} else {
-		$uri = get_template_directory() . '/' . $path
+		$uri = get_template_directory() . '/' . $path;
 	}
 	return $uri;
 }
@@ -668,7 +668,7 @@ function image_path_url( $path ) {
 		$image_path = get_settings_config( 'ui' );
 		$uri = esc_url( home_url( $image_path['images'] . $path ) );
 	} else {
-		$uri = get_template_directory() . '/images/' . $path
+		$uri = get_template_directory() . '/images/' . $path;
 	}
 	return $uri;
 }
@@ -679,7 +679,7 @@ function scripts_path_url( $path ) {
 		$scripts_path = get_settings_config( 'ui' );
 		$uri = esc_url( home_url( $scripts_path['scripts'] . $path ) );
 	} else {
-		$uri = get_template_directory() . '/js/' . $path
+		$uri = get_template_directory() . '/js/' . $path;
 	}
 	return $uri;
 }
@@ -690,7 +690,7 @@ function favicon_url( $path ) {
 		$favicon_path = get_settings_config( 'ui' );
 		$uri = esc_url( home_url( $favicon_path['favicon'] . $path ) );
 	} else {
-		$uri = get_template_directory() . '/images/' . $path
+		$uri = get_template_directory() . '/images/' . $path;
 	}
 	return $uri;
 }
