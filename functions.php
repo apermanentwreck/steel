@@ -309,6 +309,32 @@ function steel_post_nav() {
 }
 endif;
 
+if ( ! function_exists( 'next_prev_post_nav' ) ) {
+	/**
+	 * Displays navigation to next/previous pages when applicable.
+	 *
+	 * @since APW 1.0
+	 */
+	function next_prev_post_nav() {
+		global $wp_query;
+		$previous = get_adjacent_post(false, '', true);
+		$next = get_adjacent_post(false, '', false);
+?>
+
+		<nav class="Navigation" role="navigation">
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
+			<?php if ( ! empty( $previous ) ) { ?>
+				<a class="Icon before previous url" data-icon="&#x25C5;" href="<?php echo get_permalink( $previous->ID ); ?>" title="<?php echo 'Read the previous article: ' . $previous->post_title; ?>"><?php echo $previous->post_title; ?></a>
+
+			<?php } ?>
+			<?php if ( ! empty( $next ) ) { ?>
+				<a class="Icon after next url" data-icon="&#x25BB;" href="<?php echo get_permalink( $next->ID ); ?>" title="<?php echo 'Read the next article: ' . $next->post_title; ?>"><?php echo $next->post_title; ?></a>
+			<?php } ?>
+		</nav>
+<?php 
+	}
+}
+
 if ( ! function_exists( 'steel_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
