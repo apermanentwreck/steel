@@ -641,15 +641,58 @@ function shortlink_pretty_url( $url ) {
 }
 
 function stylesheet_url( $path ) {
-	return esc_url( home_url( 'ui/stylesheets/' . $path ) );
+	$uri = '';
+	if ( get_settings_config( 'ui' ) ) {
+		$stylesheet_path = get_settings_config( 'ui' );
+		$uri = esc_url( home_url( $stylesheet_path['stylesheet'] . $path ) );
+	} else {
+		$uri = get_template_directory() . '/css/' . $path
+	}
+	return $uri;
+}
+
+function production_ui_url( $path ) {
+	$uri = '';
+	if ( get_settings_config( 'ui' ) ) {
+		$production_path = get_settings_config( 'ui' );
+		$uri = esc_url( home_url( $production_path['production'] . $path ) );
+	} else {
+		$uri = get_template_directory() . '/' . $path
+	}
+	return $uri;
 }
 
 function image_path_url( $path ) {
-	return esc_url( home_url( 'ui/images/' . $path ) );
+	$uri = '';
+	if ( get_settings_config( 'ui' ) ) {
+		$image_path = get_settings_config( 'ui' );
+		$uri = esc_url( home_url( $image_path['images'] . $path ) );
+	} else {
+		$uri = get_template_directory() . '/images/' . $path
+	}
+	return $uri;
+}
+
+function scripts_path_url( $path ) {
+	$uri = '';
+	if ( get_settings_config( 'ui' ) ) {
+		$scripts_path = get_settings_config( 'ui' );
+		$uri = esc_url( home_url( $scripts_path['scripts'] . $path ) );
+	} else {
+		$uri = get_template_directory() . '/js/' . $path
+	}
+	return $uri;
 }
 
 function favicon_url( $path ) {
-	return esc_url( home_url( 'ui/images/favicons/' . $path ) );
+	$uri = '';
+	if ( get_settings_config( 'ui' ) ) {
+		$favicon_path = get_settings_config( 'ui' );
+		$uri = esc_url( home_url( $favicon_path['favicon'] . $path ) );
+	} else {
+		$uri = get_template_directory() . '/images/' . $path
+	}
+	return $uri;
 }
 
 // this is the relative path from WP_CONTENT_DIR to your uploads directory
@@ -823,6 +866,28 @@ function search_url_rewrite() {
 }
 add_action( 'template_redirect', 'search_url_rewrite' );
 
+function the_stylesheets( $location, $package ) {
+	if ( ! $location ) return;
+
+	/* ----- dev ----- */
+	if ( strpos( $_SERVER['HTTP_HOST'], 'dev' ) ) {
+		$files = file_get_contents( $location );
+		$data = json_decode( $files, true );
+		for( $i = 0; $i < count( $data['files'] ); $i++ ) {
+
+			echo '<link rel="stylesheet" href="/<?php echo $data['files'][$i]; ?>" />';
+
+		};
+
+	/* ----- prod ----- */
+	} else { 
+		$pkg = json_decode( file_get_contents( $package ), true );
+
+		echo '<link rel="stylesheet" href="<?php echo production_ui_url( $pkg['name'] . '.v' . $pkg['version'] . '.min.css' ); ?>" />';
+	}
+
+}
+
 /**
  * removes the rss feed, comments rss feed, rsd_link, 
  * wlwmanifest_link, & wp_generator
@@ -837,15 +902,15 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 // trying to figure out how to get these 2 back
 // in to the header.php
 //remove_filter( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
-//remove_action( 'wp_head', 'locale_stylesheet' );
+remove_action( 'wp_head', 'locale_stylesheet' );
 remove_action( 'wp_head', 'noindex', 1 );
-//remove_action( 'wp_head', 'wp_print_styles', 8 );
-//remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
+remove_action( 'wp_head', 'wp_print_styles', 8 );
+remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'rel_canonical' );
-//remove_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
+remove_action( 'wp_footer', 'wp_print_footer_scripts', 20 );
 // removes the link tag for the wp.me shortlink that gets generated
 remove_action( 'wp_head', 'shortlink_wp_head', 10 );
 // removing the default shortlink
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 ); 
-//remove_action( 'wp_print_footer_scripts', '_wp_footer_scripts' );
+remove_action( 'wp_print_footer_scripts', '_wp_footer_scripts' );
