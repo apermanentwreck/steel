@@ -75,11 +75,13 @@
 			if ( get_settings_config( 'google_analytics' ) ) {
 				include 'inc/meta/analytics.php';
 			} 
+
+			/* ----- HTML 5 Shiv ----- */
+			if ( get_settings_config( 'html5' ) ) {
+				include 'inc/meta/html5-shiv.php';
+			} 
 		?>
 
-		<!--[if lt IE 9]>
-		<script src="<?php echo scripts_path_url( 'html5.js' ); ?>"></script>
-		<![endif]-->
 
 		<!-- Title -->
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
