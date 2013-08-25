@@ -637,8 +637,8 @@ function shortlink_pretty_url( $url ) {
 
 function stylesheet_url( $path ) {
 	$uri = '';
-	if ( get_settings_config( 'ui' ) ) {
-		$stylesheet_path = get_settings_config( 'ui' );
+	$stylesheet_path = get_settings_config( 'ui' );
+	if ( ! empty( $stylesheet_path['stylesheet'] ) ) {
 		$uri = esc_url( home_url( $stylesheet_path['stylesheet'] . $path ) );
 	} else {
 		$uri = get_template_directory() . '/css/' . $path;
@@ -648,8 +648,8 @@ function stylesheet_url( $path ) {
 
 function production_ui_url( $path ) {
 	$uri = '';
-	if ( get_settings_config( 'ui' ) ) {
-		$production_path = get_settings_config( 'ui' );
+	$production_path = get_settings_config( 'ui' );
+	if ( ! empty( $production_path['production'] ) ) {
 		$uri = esc_url( home_url( $production_path['production'] . $path ) );
 	} else {
 		$uri = get_template_directory() . '/' . $path;
@@ -659,8 +659,8 @@ function production_ui_url( $path ) {
 
 function image_path_url( $path ) {
 	$uri = '';
-	if ( get_settings_config( 'ui' ) ) {
-		$image_path = get_settings_config( 'ui' );
+	$image_path = get_settings_config( 'ui' );
+	if ( ! empty( $image_path['images'] ) ) {
 		$uri = esc_url( home_url( $image_path['images'] . $path ) );
 	} else {
 		$uri = get_template_directory() . '/images/' . $path;
@@ -670,8 +670,8 @@ function image_path_url( $path ) {
 
 function scripts_path_url( $path ) {
 	$uri = '';
-	if ( get_settings_config( 'ui' ) ) {
-		$scripts_path = get_settings_config( 'ui' );
+	$scripts_path = get_settings_config( 'ui' );
+	if ( ! empty( $scripts_path['scripts'] ) ) {
 		$uri = esc_url( home_url( $scripts_path['scripts'] . $path ) );
 	} else {
 		$uri = get_template_directory() . '/js/' . $path;
@@ -681,8 +681,8 @@ function scripts_path_url( $path ) {
 
 function favicon_url( $path ) {
 	$uri = '';
-	if ( get_settings_config( 'ui' ) ) {
-		$favicon_path = get_settings_config( 'ui' );
+	$favicon_path = get_settings_config( 'ui' );
+	if ( ! empty( $favicon_path['favicon'] ) ) {
 		$uri = esc_url( home_url( $favicon_path['favicon'] . $path ) );
 	} else {
 		$uri = get_template_directory() . '/images/' . $path;

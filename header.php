@@ -137,12 +137,13 @@
 				ga('send', 'pageview');
 			</script>
 		<?php } ?>
+
 		<!--[if lt IE 9]>
-		<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
+		<script src="<?php echo scripts_path_url( 'html5.js' ); ?>"></script>
 		<![endif]-->
 
-			<!-- Title -->
-			<title><?php wp_title( '|', true, 'right' ); ?></title>
+		<!-- Title -->
+		<title><?php wp_title( '|', true, 'right' ); ?></title>
 
 		<?php wp_head(); ?>
 	</head>
