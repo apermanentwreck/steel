@@ -405,20 +405,6 @@ img {
 	color: #fbfaf3;
 }
 
-.post-format-audio:before {
-	background: url(../images/dotted-line.png) repeat-y 85px 0;
-	background-size: 4px 4px;
-	content: "\f109";
-	display: block;
-	float: left;
-	font-family: Genericons;
-	font-size: 64px;
-	-webkit-font-smoothing: antialiased;
-	height: 100%;
-	line-height: 1;
-	width: 120px;
-}
-
 /* Chat */
 .post-format-chat {
 	background-color: #eadaa6;

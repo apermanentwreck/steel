@@ -3,11 +3,11 @@ Theme Name: Steel
 Theme URI: http://wordpress.org/themes/steel
 Author: Newton of A Permanent Wreck
 Author URI: http://wrck.me/
-Description: The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small.
+Description: A minimalist theme with no styling so you can style it yourself.  HTML5 ready.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Tags: one-column, two-columns, right-sidebar, flexible-width, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
 Text Domain: Steel
 
 This theme, like WordPress, is licensed under the GPL.
@@ -466,31 +466,6 @@ hr {
  * 2.0 Repeatable Patterns
  * ----------------------------------------------------------------------------
  */
-
-.genericon:before,
-.menu-toggle:after,
-.featured-post:before,
-.date a:before,
-.entry-meta .author a:before,
-.format-audio .entry-content:before,
-.comments-link a:before,
-.tags-links a:first-child:before,
-.categories-links a:first-child:before,
-.edit-link a:before,
-.attachment .entry-title:before,
-.attachment-meta:before,
-.attachment-meta a:before,
-.comment-awaiting-moderation:before,
-.comment-reply-link:before,
-.comment-reply-login:before,
-.comment-reply-title small a:before,
-.bypostauthor > .comment-body .fn:before,
-.error404 .page-title:before {
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	font: normal 16px/1 Genericons;
-	vertical-align: text-bottom;
-}
 
 /* Clearing floats */
 .clear:after,
