@@ -862,7 +862,7 @@ function search_url_rewrite() {
 add_action( 'template_redirect', 'search_url_rewrite' );
 
 function the_stylesheets( $location, $package ) {
-	if ( ! empty( $location ) ) return;
+	if ( empty( $location ) ) return;
 
 	/* ----- dev ----- */
 	if ( strpos( $_SERVER['HTTP_HOST'], 'dev' ) ) {
