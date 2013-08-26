@@ -1,5 +1,6 @@
 {
     "files" : [
+		"vendor/normalize-css/normalize.css",
         "css/editor-style.css"
     ]
 }

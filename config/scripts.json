@@ -1,5 +1,6 @@
 {
     "files" : [
+		"vendor/jquery/jquery.js",
         "js/functions.js",
 		"js/theme-customizer.js"
     ]
