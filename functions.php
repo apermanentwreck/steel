@@ -160,10 +160,6 @@ function steel_scripts_styles() {
 	if ( is_active_sidebar( 'sidebar-1' ) )
 		wp_enqueue_script( 'jquery-masonry' );
 
-	// Loads JavaScript file with functionality specific to Steel.
-	wp_enqueue_script( 'steel-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '2013-07-18', true );
-
-
 	// Loads our main stylesheet.
 	wp_enqueue_style( 'steel-style', get_stylesheet_uri(), array(), '2013-07-18' );
 
@@ -560,17 +556,6 @@ function steel_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'steel_customize_register' );
 
-/**
- * Binds JavaScript handlers to make Customizer preview reload changes
- * asynchronously.
- *
- * @since Steel 1.0
- */
-function steel_customize_preview_js() {
-	wp_enqueue_script( 'steel-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
-}
-add_action( 'customize_preview_init', 'steel_customize_preview_js' );
-
 function custom_excerpt_more( $excerpt ) {
 	return str_replace( ' [...]', '&hellip;', $excerpt );
 }
@@ -876,7 +861,7 @@ function the_stylesheets( $location, $package ) {
 
 	/* ----- prod ----- */
 	} else { 
-		$pkg = ( get_settings_config( 'package' ) ) ? get_settings_config( 'package' ) : json_decode( file_get_contents( $package ), true );
+		$pkg = ( get_settings_config( 'package' ) ) ? get_settings_config( 'package' ) : json_decode( file_get_contents( 'package.json' ), true );
 
 		echo '<link rel="stylesheet" href="' .  production_ui_url( $pkg['name'] . '.v' . $pkg['version'] . '.min.css' ) . '" />';
 	}

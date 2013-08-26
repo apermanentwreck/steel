@@ -1,0 +1,44 @@
+{
+    "name" : "steel",
+    "private" : false,
+    "version" : "1.1.2",
+    "homepage" : "https://github.com/apermanentwreck/steel/",
+    "author" : {
+        "name" : "Newton",
+        "url" : "http://wrck.me/about"
+    },
+    "description" : "A minimalist Wordpress theme with configurable options.",
+    "keywords" : [ 
+        "wordpress", 
+        "minimal", 
+        "html5",
+        "mobile",
+		"theme"
+    ],
+    "main" : [
+        "./css/common.css",
+        "./js/common.js"
+    ],
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/apermanentwreck/steel.git"
+    },
+    "bugs": {
+        "url" : "https://github.com/apermanentwreck/steel/issues"
+    },
+    "licenses": [
+        {
+            "type" : "Creative Commons Legal Code Attribution-NonCommercial-NoDerivs 3.0",
+            "url" : "https://github.com/apermanentwreck/steel/blob/master/license.md"
+        }
+    ],
+    "devDependencies" : {
+        "grunt" : "~0.4.1",
+        "grunt-contrib-clean" : "~0.4.1",
+        "grunt-contrib-concat" : "~0.3.0",
+        "grunt-contrib-cssmin" : "~0.6.1",
+        "grunt-contrib-jshint" : "~0.6.0",
+        "grunt-contrib-uglify" : "~0.2.2",
+        "grunt-contrib-watch" : "~0.4.4"
+    }
+}

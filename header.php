@@ -58,7 +58,7 @@
 			}
 
 			/* ----- Stylesheets ----- */
-			the_stylesheets( null, null );
+			the_stylesheets( 'config/settings.json', true );
 
 			/* ----- Analytics ----- */
 			if ( get_settings_config( 'google_analytics' ) ) {
