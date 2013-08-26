@@ -2,8 +2,8 @@
     "name" : "steel",
     "version" : "1.0.0",
     "main" : [
-        './compressed/common.css',
-        './compressed/common.js'
+        "./compressed/common.css",
+        "./compressed/common.js"
     ],
     "dependencies" : {
         "normalize-css" : "~2.1.2",
