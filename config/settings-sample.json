@@ -12,7 +12,7 @@
 		"images" : "{{ url path to images files, defaults to themes images }}",
 		"favicons" : "{{ url path to favicon files, defaults to themes images }}"
 	},
-	"package" : "{{ location to package.json for grunt }}",
+	"package" : "package.json",
 	"mobile" : {{ boolean for mobile support }},
 	"html5" : {{ boolean for html5 tag support }}
 }
