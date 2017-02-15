@@ -1,5 +1,7 @@
 # Steel Wordpress Theme
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/chrisopedia/steel.svg)](https://greenkeeper.io/)
+
 A minimalist Wordpress theme with configurable options.
 
 ## Technologies Used
